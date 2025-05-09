@@ -12,7 +12,13 @@ def load_and_label_raw_data(filepath: str) -> pd.DataFrame:
     df['target'] = df['target'].map({1: 1, 2: 0})
     return df
 
-def replace_categorical_labels(df):
+def replace_categorical_labels(df, numeric_features = None):
+    if numeric_features is None: 
+        numeric_features = [
+        'duration_mon', 'credit_amount', 'installment_rate', 
+        'residence_since', 'age', 'existing_credits', 'num_liable_people'
+    ]
+        
     account_status_map = {
         "A11": "< 0 DM", "A12": "0 <= ... < 200 DM", "A13": ">= 200 DM / salary assignment", "A14": "no checking account"
     }
