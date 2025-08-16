@@ -9,7 +9,7 @@ def load_and_label_raw_data(filepath: str) -> pd.DataFrame:
     ]
     df = pd.read_csv(filepath, delimiter=' ', header=None)
     df.columns = columns
-    df['target'] = df['target'].map({1: 1, 2: 0})
+    df['target'] = df['target'].map({1: 0, 2: 1})
     return df
 
 def replace_categorical_labels(df, numeric_features = None):
